@@ -2,30 +2,35 @@
 <html>
 <head>
 	<title></title>
-	<script>
-    	/* Style the top navigation bar */
-	.topnav {
-	  overflow: hidden;
-	  background-color: #333;
-	}
+	<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-	/* Style the topnav links */
-	.topnav a {
-	  float: left;
-	  display: block;
-	  color: #f2f2f2;
-	  text-align: center;
-	  padding: 14px 16px;
-	  text-decoration: none;
-	}
+li {
+  float: left;
+}
 
-	/* Change color on hover */
-	.topnav a:hover {
-	  background-color: #ddd;
-	  color: black;
-	}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-    </script>
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+</style>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -51,18 +56,16 @@
             <div class="col-md-12">
               <br>	<br>	<br>	
 
-<div class="topnav">
-  <a href="<?php echo base_url().'admin' ?>"><button class="btn btn-success">Home</button></a>
+              <ul>
+                <li><a class="active" href="<?php echo base_url().'admin' ?>">Home</a></li>
+                <li><a href="<?php echo base_url().'admin/viewEmployee' ?>">Employee</a></li>
+                <li><a href="<?php echo base_url().'admin/salary' ?>">Salary</a></li>
+                <li><a href="<?php echo base_url().'admin/display' ?>">Search</a></li>
+                <li style="float:right"><a href="<?php echo base_url().'home/logout/' ?>">Logout</a></li>
+              </ul>
 
-  <a href="<?php echo base_url().'admin/employee' ?>"><button class="btn btn-success">Manage Employee</button></a>
 
-  <a href="<?php echo base_url().'admin/salary' ?>"><button class="btn btn-success">Monthly salary</button></a>
 
-  <a href="<?php echo base_url().'admin/viewsalary' ?>"><button class="btn btn-success">View salary</button></a>
 
-  <a href="<?php echo base_url().'admin/display' ?>"><button class="btn btn-success">Search</button></a>
 
-  <a href="<?php echo base_url().'home/logout/' ?>"><button class="btn btn-success">Logout</button></a>
 
-</div>
-<br>	<br>	<br>	

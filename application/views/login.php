@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<h2><center>Login Form</center></h2>
+<h2><center>Admin Login</center></h2>
 
 <form action="" method="post">
   <div class="imgcontainer">
@@ -13,12 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-3"></div>
           <div class="col-md-8">
           <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" >
+            <input type="text" placeholder="Enter Username" required="" name="username" >
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" >
-            <button><input type="submit" name="login" value="Login" ></button>
-            <!-- <button type="submit" name="login" >Login</button> -->
+            <input type="password" placeholder="Enter Password" required="" name="password" >
+            <button type="submit" name="login" value="login">Login</button>
             
         </div>
           </div>

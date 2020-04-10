@@ -2,13 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
-	public function index()
-	{
-		$this->load->view('home');
-        $this->load->view('header');
-
-	}
-	public function login(){
+	// public function index()
+	// {
+ //        $this->load->view('header');
+ //        $this->load->view('login');
+ //        $this->load->view('footer');
+	// }
+	public function index(){
 
 		$this->load->model('LoginModel');
 		$this->form_validation->set_rules('username','Username','required');
@@ -31,10 +31,12 @@ class Home extends CI_Controller {
 		}	
         $this->load->view('header');
         $this->load->view('login');
+        $this->load->view('footer');
+
 	}
 	public function logout(){
 		$this->session->unset_userdata('loginId');
-		redirect(base_url().'Home/login');
+		redirect(base_url().'Home');
 	}
 }
 ?>

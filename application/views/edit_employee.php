@@ -17,16 +17,9 @@
  	<td><div class="form-group"><input class="form-control" type="text" name="phone" value= "<?php echo $user[0]['phone'] ?>"></div></td> 
  </tr>
  <tr>
- 	<td>job_title</td>
- 	<td><div class="form-group"><input class="form-control" type="text" name="job_title" value= "<?php echo $user[0]['job_title'] ?>"></div></td>
- </tr>
- <tr>
- 	<td>date_of_join</td>
- 	<td><div class="form-group"><input class="form-control" type="text" name="date_of_join" value= "<?php echo $user[0]['date_of_join'] ?>"></div></td> 
- </tr>
- <tr>
  	<td>address</td>
- 	<td><div class="form-group"><input class="form-control" type="text" name="address" value= "<?php echo $user[0]['address'] ?>"></div></td>
+ 	<td><div class="form-group">
+ 	<input class="form-control" type="text" name="address" value= "<?php echo $user[0]['address'] ?>"></div></td>
  </tr>
  	<tr>
  		<td>photo</td>
@@ -36,6 +29,14 @@
                     <input type="hidden"  id="old"  name="old"  value="<?php echo $user[0]['photo']   ?>">
 			</div></td>
  	</tr>
+ 	<tr>
+ 	<td>job_title</td>
+ 	<td><div class="form-group"><input class="form-control" type="text" name="job_title" value= "<?php echo $user[0]['job_title'] ?>"></div></td>
+ </tr>
+ <tr>
+ 	<td>date_of_join</td>
+ 	<td><div class="form-group"><input class="form-control" type="text" name="date_of_join" value= "<?php echo $user[0]['date_of_join'] ?>"></div></td> 
+ </tr>
  	<tr>
  	<td>department</td>
  	<td><div class="form-group"><input class="form-control" type="text" name="department" value= "<?php echo $user[0]['department'] ?>"></div></td> 

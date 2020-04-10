@@ -1,4 +1,7 @@
+<br>	
 <h2 align="center">Monthly Salary</h2>
+<a href="<?php echo base_url().'admin/viewsalary' ?>"><button class="btn btn-success">View Salary Details</button></a>
+<br><br>
 <div>
  <form method="post"  >
   	<?php echo validation_errors(); ?>
@@ -18,44 +21,53 @@
 	<tr>
 		<th>Salary Date</th>
 		<td><div class="form-group">
-	        <input class="form-control"  type="date" name="salary_date" required=""></div>
+	        <input class="form-control"  type="text" name="salary_date" value="<?php echo date('d-m-Y') ;?>" readonly=""></div>
 	    </td>
+	    
 	</tr> 
+	<tr>
+		<th>Salary Month</th>
+	    <td><div class="form-group">
+	        <input class="form-control"  type="month" name="salary_month"  required=""></div>
+	    </td>
+	</tr>
 	<tr>
 		<th>Payment type</th>
 			<td><div class="form-group">
-			<select class="form-control" name="payment_type" required="" selected="selected">
-				<option value="" disabled selected>.......select.......</option>     
-				<option value="Monthly" >Monthly</option>
-				<option value="Advanced" >Advanced</option>
-				<option value="Late" >Late</option>
-		    </select></div>
+			<input type="radio" id="Monthly" name="payment_type" value="Monthly">
+  			<label for="Monthly">Monthly</label>
+  			<input type="radio" id="Advanced" name="payment_type" value="Advanced">
+  			<label for="Advanced">Advanced</label>
+  			<input type="radio" id="Late" name="payment_type" value="Late">
+  			<label for="Late">Late</label>
+			</div>
 		</td>
 	</tr>
 	<tr>
 		<th>Payment Mode</th>
 			<td><div class="form-group">
-			<select class="form-control" name="payment_mode" required="" selected="selected">
-				<option value="" disabled selected>.......select.......</option>     
-				<option value="bank" >bank</option>
-				<option value="cash" >cash</option>
-				<option value="cheque" >cheque</option>
-		    </select></div>
+			<input type="radio" id="bank" name="payment_mode" value="bank">
+  			<label for="bank">bank</label>
+  			<input type="radio" id="cash" name="payment_mode" value="cash">
+  			<label for="cash">cash</label>
+  			<input type="radio" id="cheque" name="payment_mode" value="cheque">
+  			<label for="cheque">cheque</label>
+			</div>
 		</td>
 	</tr>
 	<tr>
-		<th>salary_amount</th>
+		<th>Salary amount</th>
 		<td><div class="form-group">
 		<input class="form-control" type="text" name="salary_amount" id="salary_amount" required="">
 		</div></td>
 	</tr> 
 	<tr>
-		<th>dedution</th>
+		<th>Dedution</th>
 		<td><div class="form-group">
 			<input class="form-control" type="text" name="dedution" id="dedution" onkeyup="calculate(this)" onchange='calculate(this);'  required=""></div></td>
 	</tr> 
 	<tr>
-		<th>net-pay</th>
+		<th>Net-pay</th>
 		<td><div class="form-group">
 			<input class="form-control" type="text" name="net-pay" id="net-pay" readonly=""></div></td>
 	</tr>
@@ -68,7 +80,3 @@
  </form> 
 </div>
 
-<script type="text/javascript">
-
-	
-</script>

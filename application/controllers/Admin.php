@@ -7,13 +7,15 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		if($this->session->userdata('loginId')==False){
 			$this->session->set_userdata('message','Login to Continue !');
-			redirect(base_url().'Home/login');
+			redirect(base_url().'Home');
 		}		
 	}
 	public function index()
 	{
+		$data['user'] = $this->AdminModel->view_employee();
         $this->load->view('admin_header');
-		$this->load->view('admin_home');
+		$this->load->view('admin_home',$data);
+        $this->load->view('admin_footer');
 	}
 	# Add Employee
 	public function employee(){
@@ -54,12 +56,20 @@ class Admin extends CI_Controller {
                //print_r($userData);
              $insertUserData = $this->AdminModel->employee($userData);
         		//print_r($insertUserData);
-             redirect(base_url().'admin/employee');
+             redirect(base_url().'admin/viewEmployee');
 
 		}
 		$data['user'] = $this->AdminModel->view_employee();
 		$this->load->view('admin_header');
 		$this->load->view('admin_employee',$data);
+		$this->load->view('admin_footer');		
+	}
+	# view Employee
+	public function viewEmployee(){
+		$data['user'] = $this->AdminModel->view_employee();
+		$this->load->view('admin_header');
+		$this->load->view('view_employee',$data);
+		$this->load->view('admin_footer');		
 	}
 	# Edit Employee
 	public function editEmployee($id){		
@@ -108,16 +118,18 @@ class Admin extends CI_Controller {
               // print_r($userData);
              $updateUserData = $this->AdminModel->edit_employee($userData,$id);
         	
-			 redirect(base_url().'admin/employee');
+			 redirect(base_url().'admin/viewEmployee');
 		}
 		$data['user'] = $this->AdminModel->view_employee($id);
 		$this->load->view('admin_header');
 		$this->load->view('edit_employee',$data);
+		$this->load->view('admin_footer');
+
 	}
 	# delete an item from employee
 	public function deleteEmployee($id){
 		$this->AdminModel->delete_employee($id);
-		redirect('admin/employee');
+		redirect('admin/viewEmployee');
 	}
 	# Add monthly salary
 	public function salary(){
@@ -131,7 +143,15 @@ class Admin extends CI_Controller {
 
 		if($this->input->post('salary')==True){
 			if($this->form_validation->run()===True){
-				$this->AdminModel->salary();
+				$date = $this->input->post('salary_month');
+				echo $date;
+				 $date = explode('-', $date);
+				 $year  = $date[0];
+				 $month = $date[1];
+				 echo $month;
+				// $day   = $date[2];
+ 
+				$this->AdminModel->salary($month,$year);
 				echo "successfull";
 				redirect(base_url().'admin/salary');
 			}
@@ -148,6 +168,23 @@ class Admin extends CI_Controller {
 		$this->load->view('view_salary',$data);
 		$this->load->view('admin_footer');
 	}
+	public function editSalary($id){
+		if($this->input->post('edit')==True){
+				$date = $this->input->post('salary_month');
+				echo $date;
+				$date = explode('-', $date);
+				$month  = $date[0];
+				$year = $date[1];
+				$this->AdminModel->edit_salary($id,$month,$year);
+				echo "successfull";
+				redirect(base_url().'admin/salary');
+		}
+		$data['user'] = $this->AdminModel->view_salary($id);
+		$this->load->view('admin_header');
+		$this->load->view('edit_salary',$data);
+		$this->load->view('admin_footer');
+	}
+
 	# Search Employee
 	public function display(){
 		$this->load->view('admin_header');
@@ -170,6 +207,7 @@ class Admin extends CI_Controller {
 		  <tr>
 		    <th>Employee name</th>
 			<th>Salary Date</th>
+			<th>Salary month and year</th>
 			<th>Payment Type</th>
 			<th>Payment Mode</th>
 		    <th>Salary Amount</th>
@@ -185,6 +223,7 @@ class Admin extends CI_Controller {
 									<tr>
 									<td>'.$row->emp_name.'</td>
 									<td>'.$row->salary_date.'</td>
+									<td>'.$row->salary_month.'-'.$row->salary_year.'</td>
 									<td>'.$row->payment_type.'</td>
 									<td>'.$row->payment_mode.'</td>
 									<td>'.$row->salary_amount.'</td>

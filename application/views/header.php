@@ -105,8 +105,7 @@ span.psw {
                 <?php endif ?>
               </div>
 
-            <a href="<?php echo base_url()?>"><button class="btn btn-success">Home</button></a>
-            <a href="<?php echo base_url().'Home/login'?>"><button class="btn btn-success">Login</button></a></div>
+            
             </div>
         </div>
 
